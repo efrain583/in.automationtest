@@ -28,6 +28,9 @@ public class AutomationTestingBase {
 	public void startClass(@Optional("firefox") String browser){
 		
 		driver = UtilKit.initTest(project, application, browser, className);
+		By skipSigninButtonL = UtilKit.UIMap("SKIPSIGNIN_BUTTON");
+		driver.findElement(skipSigninButtonL).click();
+		UtilKit.waitForPageTitle(driver, 3, "Register");
 
 	}
 	
@@ -35,9 +38,6 @@ public class AutomationTestingBase {
 		public void startMethod(Method method){
 			UtilKit.initMethod(method);
 
-			By skipSigninButtonL = UtilKit.UIMap("SKIPSIGNIN_BUTTON");
-			driver.findElement(skipSigninButtonL).click();
-			UtilKit.waitForPageTitle(driver, 3, "Register");
 	}
 	
 	@AfterMethod(groups = {"grid"})
