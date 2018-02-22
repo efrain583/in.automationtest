@@ -6,7 +6,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<!-- See the Super POM in $M2_HOME\lib\maven-model-builder-3.3.9.jar\org\apache\maven\model\ -->
 	<!-- testSourceDirectory is set to ${project.basedir}/src/test/java -->
 	
-	
   <modelVersion>4.0.0</modelVersion>
   <groupId>in.automationtest.tests</groupId>
   <artifactId>in.automationtest</artifactId>
@@ -28,7 +27,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<testngSuiteSourceDir>\src\test\java\in\automationtest\suite</testngSuiteSourceDir>
-		<AutomationtestRegressionTestsuiteFile>${project.basedir}/${testngSuiteSourceDir}/AutomationTestRegression.testng.xml</AutomationtestRegressionTestsuiteFile>
+		<AutomationtestRegressionTestsuiteFile>${project.basedir}/${testngSuiteSourceDir}/AutomationRegression.xml</AutomationtestRegressionTestsuiteFile>
 	</properties>
 
 	<profiles>

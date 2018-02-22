@@ -23,7 +23,7 @@ public class AutomationTestingBase {
 	String browser = "firefox";
 	String className = this.getClass().getName();
 	
-	@BeforeClass (groups = {"grid"})
+	@BeforeClass (groups = {"grid", "register"})
 	@Parameters ("browser")
 	public void startClass(@Optional("firefox") String browser){
 		
@@ -39,14 +39,21 @@ public class AutomationTestingBase {
 			UtilKit.initMethod(method);
 
 	}
+	@BeforeMethod(groups = {"register"})
+		public void startRegisterMethod(Method method){
+			driver.findElement(By.xpath(".//a[text()='Register']")).click();
+			UtilKit.waitForPageTitle(driver, 3, "Register");
+			UtilKit.initMethod(method);
+
+	}
 	
-	@AfterMethod(groups = {"grid"})
+	@AfterMethod(groups = {"grid","register"})
 		public void stopMetod(ITestResult result){
 		
 			UtilKit.terminateMethod(driver, result);
 	}
 	
-	@AfterClass (groups = "grid")
+	@AfterClass (groups = {"grid", "register"})
 	public void stopClass(){
 		UtilKit.terminateTest(driver);
 	}

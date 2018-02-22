@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AutomationGroups" verbose="8">
+	<test name="AutomationGroupsBasic">
+		<groups>
+			<define name="AllAutomationGroups">
+				<include name="grid"></include>
+				<include name="register"></include>
+			</define>
+			<define name="NonRegister">
+				<include name="grid"></include>
+			</define>
+			<run>
+				<include name="AllAutomationGroups"></include>
+<!-- 				<include name="NonRegister"></include> -->
+			</run>
+		</groups>
+		<classes>
+			<class name="in.automationtest.tests.AutomationTestingRegister" />
+			<class name="in.automationtest.tests.AutomationTestingGrid" />
+		</classes>
+	</test> <!-- AutomationGroupsBasic -->
+</suite> <!-- AutomationGroups -->
