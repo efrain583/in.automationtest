@@ -28,7 +28,7 @@ public class AutomationTestingGrid extends AutomationTestingBase {
 
 		}
 		
-		@Test(enabled = true, groups = {"grid"}, dataProvider = "recordVerificationDataProvider", dependsOnMethods = {"accessGrid"})
+		@Test(enabled = false, groups = {"grid"}, dataProvider = "recordVerificationDataProvider", dependsOnMethods = {"accessGrid"})
 		public void recordVerification(String email){
 			
 			AutomationTestingGridPage ATGP = new AutomationTestingGridPage(driver);
