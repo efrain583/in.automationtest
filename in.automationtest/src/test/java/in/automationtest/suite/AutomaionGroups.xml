@@ -3,21 +3,28 @@
 <suite name="AutomationGroups" verbose="8">
 	<test name="AutomationGroupsBasic">
 		<groups>
+			<define name="PerformanceGroup">
+				<include name="performance"></include>
+			</define>
 			<define name="AllAutomationGroups">
 				<include name="grid"></include>
 				<include name="register"></include>
+				<include name="wysiwyg"></include>
 			</define>
 			<define name="NonRegister">
 				<include name="grid"></include>
+				<include name="wysiwyg"></include>
 			</define>
 			<run>
+<!-- 				<include name="PerformanceGroup"></include> -->
 				<include name="AllAutomationGroups"></include>
-<!-- 				<include name="NonRegister"></include> -->
+				<!-- <include name="NonRegister"></include> -->
 			</run>
 		</groups>
 		<classes>
 			<class name="in.automationtest.tests.AutomationTestingRegister" />
 			<class name="in.automationtest.tests.AutomationTestingGrid" />
+			<class name="in.automationtest.tests.AutomationTestingCKEditor" />
 		</classes>
 	</test> <!-- AutomationGroupsBasic -->
 </suite> <!-- AutomationGroups -->

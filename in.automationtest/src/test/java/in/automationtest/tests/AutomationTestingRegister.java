@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.jcabi.log.Logger;
+
 import Util.UtilKit;
 import in.automationtest.pages.AutomationTestingRegisterPage;
 
@@ -15,13 +17,13 @@ public class AutomationTestingRegister extends AutomationTestingBase {
 		AutomationTestingRegisterPage ATRP = new AutomationTestingRegisterPage(driver);
 		
 		ATRP.firstNameTextbox().clear();
-		ATRP.firstNameTextbox().sendKeys("Efrain");
+		ATRP.firstNameTextbox().sendKeys(UtilKit.dataFactory.getFirstName());
 		ATRP.lastNameTextbox().clear();
-		ATRP.lastNameTextbox().sendKeys("Sanchez");
+		ATRP.lastNameTextbox().sendKeys(UtilKit.dataFactory.getLastName());
 		ATRP.addressTestArea().clear();
-		ATRP.addressTestArea().sendKeys("44 Brandywine Circle");
+		ATRP.addressTestArea().sendKeys(UtilKit.dataFactory.getAddress());
 		ATRP.emailaddressInput().clear();
-		ATRP.emailaddressInput().sendKeys("efrain583@yahoo.com");
+		ATRP.emailaddressInput().sendKeys(UtilKit.dataFactory.getEmailAddress());
 		
 		ATRP.submitButton().click();
 		
@@ -31,7 +33,7 @@ public class AutomationTestingRegister extends AutomationTestingBase {
 		ATRP.refreshButton().click();
 	}		
 
-	@Test(enabled=true, groups={"register"}, dependsOnMethods={"refreshRegistration"}, 
+	@Test(enabled=true, groups={"register", "performance"}, dependsOnMethods={"refreshRegistration"},
 					dataProvider = "registrationDataProvider")
 	public void submitRegistration(
 									String fName,String lName, String address, String email, String phone, String sLanguage,
@@ -69,15 +71,26 @@ public class AutomationTestingRegister extends AutomationTestingBase {
 		ATRP.passwordInput().sendKeys(pass);
 		ATRP.confirmpassInput().sendKeys(pass);
 		
+		UtilKit.stopWatch.split();
+		long splitStartTime = UtilKit.stopWatch.getSplitTime(); /* the time between the start and the split in milliseconds
+		 														(the time split started) */
+		UtilKit.logger.info("Submit Button Split Started at : " + (float)splitStartTime/1000);
 		ATRP.submitButton().click();
 		
 		UtilKit.suspendAction(500);
+		// The current time in the stop watch minus the start of the Split time gives the duration of the split
+		long splitEndTime =UtilKit.stopWatch.getTime();
+		UtilKit.logger.info("Submit Button Split Ended at : " + (float)splitEndTime/1000);
+		UtilKit.logger.info("Submit Button Split Duration Time : " + (float)(splitEndTime - splitStartTime)/1000);
+		UtilKit.stopWatch.unsplit();
 		
 	}	
 		
-	@Test(enabled=true, groups={"register"}, 
+	@Test(enabled=true, groups={"register", "performance"}, 
+			/*
 			dependsOnMethods ={"phoneRequiredRegistration","countryRequiredRegistration",
 								"genderRequiredRegistration","emailRequiredRegistration"},
+								*/
 			dataProvider = "registrationDataProvider")
 	public void refreshRegistration(
 									String fName,String lName, String address, String email, String phone, String sLanguage,
@@ -104,8 +117,6 @@ public class AutomationTestingRegister extends AutomationTestingBase {
 		ATRP.hockeyhobbieInput().click();
 		
 		ATRP.languageSelect(sLanguage);
-		ATRP.languageSelect("Filipino");
-		ATRP.languageSelect("Catalan");
 		
 		ATRP.skillsSelect(skill);
 		ATRP.countrySelect(country);
@@ -129,15 +140,16 @@ public class AutomationTestingRegister extends AutomationTestingBase {
 		AutomationTestingRegisterPage ATRP = new AutomationTestingRegisterPage(driver);
 		
 		ATRP.firstNameTextbox().clear();
-		ATRP.firstNameTextbox().sendKeys("Efrain");
+		ATRP.firstNameTextbox().sendKeys(UtilKit.dataFactory.getFirstName());
 		ATRP.lastNameTextbox().clear();
-		ATRP.lastNameTextbox().sendKeys("Sanchez");
+		ATRP.lastNameTextbox().sendKeys(UtilKit.dataFactory.getLastName());
 		ATRP.addressTestArea().clear();
-		ATRP.addressTestArea().sendKeys("44 Brandywine Circle");
+		ATRP.addressTestArea().sendKeys(UtilKit.dataFactory.getAddress());
 		ATRP.emailaddressInput().clear();
-		ATRP.emailaddressInput().sendKeys("efrain583@yahoo.com");
+		ATRP.emailaddressInput().sendKeys(UtilKit.dataFactory.getEmailAddress());
 		ATRP.phoneInput().clear();
-		ATRP.phoneInput().sendKeys("7324242995");
+		ATRP.phoneInput().sendKeys( UtilKit.dataFactory.getNumberText(10));
+
 		ATRP.malegenderInput().click();
 		ATRP.crickethobbieInput().click();
 		ATRP.movieshobbieInput().click();
@@ -160,17 +172,17 @@ public class AutomationTestingRegister extends AutomationTestingBase {
 	public void genderRequiredRegistration(){
 
 		AutomationTestingRegisterPage ATRP = new AutomationTestingRegisterPage(driver);
-		
+
 		ATRP.firstNameTextbox().clear();
-		ATRP.firstNameTextbox().sendKeys("Efrain");
+		ATRP.firstNameTextbox().sendKeys(UtilKit.dataFactory.getFirstName());
 		ATRP.lastNameTextbox().clear();
-		ATRP.lastNameTextbox().sendKeys("Sanchez");
+		ATRP.lastNameTextbox().sendKeys(UtilKit.dataFactory.getLastName());
 		ATRP.addressTestArea().clear();
-		ATRP.addressTestArea().sendKeys("44 Brandywine Circle");
+		ATRP.addressTestArea().sendKeys(UtilKit.dataFactory.getAddress());
 		ATRP.emailaddressInput().clear();
-		ATRP.emailaddressInput().sendKeys("efrain583@yahoo.com");
+		ATRP.emailaddressInput().sendKeys(UtilKit.dataFactory.getEmailAddress());
 		ATRP.phoneInput().clear();
-		ATRP.phoneInput().sendKeys("7324242995");
+		ATRP.phoneInput().sendKeys(UtilKit.dataFactory.getNumberText(10));
 		
 		ATRP.submitButton().click();
 		
@@ -202,6 +214,19 @@ public class AutomationTestingRegister extends AutomationTestingBase {
 		
 		ATRP.refreshButton().click();
 		
+	}
+	
+	@Test(enabled = true, groups = {"other"})
+	public void testSelectParser(){
+		String stmt1 = "select first, addres, phone , zip from employeeData e where name = 'Efrain'";
+		String stmt2 = "select e.first, e.addres, e.phone , e.zip from employeeData e where name = 'Efrain'";
+		String stmt3 = "select avg(e.salary) as AverageSalary, UCASE(e.first) as Name, UCASE(e.last) as LastName from employeeData as Ave"; 
+		String stmt4 = "select Shippers.shipperName, count(orders.orderId) as NumberOfOrders from orders"
+						+ "LEFT JOIN shippers on orders.shipperId = Shippers.shiperId Group By ShipperName, NumberOfOrders";
+		UtilKit.parseColumnsNew(stmt1);
+		UtilKit.parseColumnsNew(stmt2);
+		UtilKit.parseColumnsNew(stmt3);
+		UtilKit.parseColumnsNew(stmt4);
 	}
 	
 	@DataProvider

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="AutomationRegression" verbose="8" >
-  <test name="AutomationRegressionBasic">
-    <classes>
-      <class name="in.automationtest.tests.AutomationTestingRegister"/>
-      <class name="in.automationtest.tests.AutomationTestingGrid"/>
-    </classes>
-  </test> <!-- AutomationRegressionBasic -->
+<suite name="AutomationRegression" verbose="8">
+	<listeners>
+		<listener class-name="in.automationtest.tests.AutomationTestingListener"></listener>
+	</listeners>
+	<test name="AutomationRegressionBasic">
+		<classes>
+<!-- 			<class name="in.automationtest.tests.AutomationTestingRegister" /> -->
+			<class name="in.automationtest.tests.AutomationTestingGrid" />
+<!-- 			<class name="in.automationtest.tests.AutomationTestingCKEditor" /> -->
+		</classes>
+	</test> <!-- AutomationRegressionBasic -->
 </suite> <!-- AutomationRegression -->

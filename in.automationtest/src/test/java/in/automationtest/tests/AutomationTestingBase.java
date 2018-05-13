@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -14,6 +15,8 @@ import org.testng.annotations.Parameters;
 import org.testng.internal.TestResult;
 
 import Util.UtilKit;
+import in.automationtest.pages.AutomationTestingCKEditorPage;
+import in.automationtest.pages.AutomationTestingVideoPage;
 
 public class AutomationTestingBase {
 	
@@ -23,7 +26,7 @@ public class AutomationTestingBase {
 	String browser = "firefox";
 	String className = this.getClass().getName();
 	
-	@BeforeClass (groups = {"grid", "register"})
+	@BeforeClass (groups = {"grid", "register", "performance","wysiwyg","video"})
 	@Parameters ("browser")
 	public void startClass(@Optional("firefox") String browser){
 		
@@ -34,26 +37,44 @@ public class AutomationTestingBase {
 
 	}
 	
-	@BeforeMethod(groups = {"grid"})
-		public void startMethod(Method method){
-			UtilKit.initMethod(method);
 
-	}
-	@BeforeMethod(groups = {"register"})
-		public void startRegisterMethod(Method method){
+	@BeforeMethod(groups = { "grid", "register", "performance", "wysiwyg", "video" })
+	public void startRegisterMethod(Method method) {
+		if (UtilKit.methodInGroup(method, "register")) {
 			driver.findElement(By.xpath(".//a[text()='Register']")).click();
 			UtilKit.waitForPageTitle(driver, 3, "Register");
-			UtilKit.initMethod(method);
+
+		}
+		if(UtilKit.methodInGroup(method, "wysiwyg")){
+			AutomationTestingCKEditorPage ATCP = new AutomationTestingCKEditorPage(driver);
+			ATCP.mouseClickOnWysiwygLink();
+			ATCP.mouseClickOnCkeditorLink();
+			UtilKit.suspendAction(1000);
+			UtilKit.waitForPageToLoad(driver, 3);
+			Assert.assertTrue(ATCP.verifyCkeditoURL(), "CKEditor URL was Not Verified");
+
+		}
+		if(UtilKit.methodInGroup(method, "video")){
+			AutomationTestingVideoPage ATVP = new AutomationTestingVideoPage(driver);
+			ATVP.mouseClickOnVideoLink();
+			UtilKit.suspendAction(1000);
+			ATVP.mouseClickOnYoutubeLink();
+			UtilKit.suspendAction(1000);
+			UtilKit.waitForPageToLoad(driver, 10);
+			Assert.assertTrue(ATVP.verifyYoutubeURL(), "Video URL was Not Verified");
+
+		}
+		UtilKit.initMethod(method);
 
 	}
 	
-	@AfterMethod(groups = {"grid","register"})
+	@AfterMethod(groups = {"grid","register", "performance"})
 		public void stopMetod(ITestResult result){
 		
 			UtilKit.terminateMethod(driver, result);
 	}
 	
-	@AfterClass (groups = {"grid", "register"})
+	@AfterClass (groups = {"grid", "register","performace"})
 	public void stopClass(){
 		UtilKit.terminateTest(driver);
 	}

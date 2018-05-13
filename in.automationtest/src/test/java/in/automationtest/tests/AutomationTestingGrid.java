@@ -10,7 +10,7 @@ import in.automationtest.pages.AutomationTestingGridPage;
 public class AutomationTestingGrid extends AutomationTestingBase {
 	
 
-		@Test(enabled = true, groups = {"grid"})
+		@Test(enabled = true, groups = {"grid", "performance"})
 		public void accessGrid(){
 
 			AutomationTestingGridPage ATGP = new AutomationTestingGridPage(driver);
@@ -28,7 +28,7 @@ public class AutomationTestingGrid extends AutomationTestingBase {
 
 		}
 		
-		@Test(enabled = false, groups = {"grid"}, dataProvider = "recordVerificationDataProvider", dependsOnMethods = {"accessGrid"})
+		@Test(enabled = true, groups = {"grid"}, dataProvider = "recordVerificationDataProvider", dependsOnMethods = {"accessGrid"})
 		public void recordVerification(String email){
 			
 			AutomationTestingGridPage ATGP = new AutomationTestingGridPage(driver);

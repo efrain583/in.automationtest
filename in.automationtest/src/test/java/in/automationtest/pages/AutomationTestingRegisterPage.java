@@ -171,23 +171,7 @@ public class AutomationTestingRegisterPage {
 		}
 
 	}
-	public boolean checkAlert(String message) {
 
-		int counter = 0;
-		while (counter < 3) {
-			try {
-				Alert myAlert = driver.switchTo().alert();
-				UtilKit.logger.info("Alert Text : " + myAlert.getText());
-				if (myAlert.getText().contains(message))
-					return true;
-			} catch (Exception e) {
-				UtilKit.suspendAction(1000);
-				counter++;
-				continue;
-			}
-		}
-		return false;
-	}
 	public boolean checkActiveElement(String elementType) {
 
 		int counter = 0;
@@ -224,10 +208,4 @@ public class AutomationTestingRegisterPage {
 		return foundFlag;
 	}	
 	
-	public void printPageHTML(){
-		System.out.println("\n================================================================================\n");
-		System.out.println("\t\t\tPage HTML : \n");
-		System.out.println(driver.findElement(By.tagName("body")).getAttribute("outerHTML"));
-		System.out.println("\n================================================================================\n");
-	}
 }
