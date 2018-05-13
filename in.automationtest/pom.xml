@@ -28,6 +28,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<testngSuiteSourceDir>\src\test\java\in\automationtest\suite</testngSuiteSourceDir>
 		<AutomationtestRegressionTestsuiteFile>${project.basedir}/${testngSuiteSourceDir}/AutomationRegression.xml</AutomationtestRegressionTestsuiteFile>
+		<dependency.locations.enabled>false</dependency.locations.enabled>
 	</properties>
 
 	<profiles>
