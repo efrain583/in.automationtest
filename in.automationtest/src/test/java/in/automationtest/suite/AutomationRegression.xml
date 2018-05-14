@@ -6,9 +6,9 @@
 	</listeners>
 	<test name="AutomationRegressionBasic">
 		<classes>
-<!-- 			<class name="in.automationtest.tests.AutomationTestingRegister" /> -->
+			<class name="in.automationtest.tests.AutomationTestingRegister" />
 			<class name="in.automationtest.tests.AutomationTestingGrid" />
-<!-- 			<class name="in.automationtest.tests.AutomationTestingCKEditor" /> -->
+			<class name="in.automationtest.tests.AutomationTestingCKEditor" />
 		</classes>
 	</test> <!-- AutomationRegressionBasic -->
 </suite> <!-- AutomationRegression -->
