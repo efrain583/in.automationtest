@@ -1,5 +1,8 @@
-This Selenium Test Automation Demo Project is Page-Object driven, Data driven, and Property driven.
- 	 This Hybrid Java Framework features  three layers of Class implementations:
+ Framework:
+ 
+		This Selenium Test Automation Demo Project is Page-Object driven, 
+		Data driven, and Property driven.
+ 	 	This Hybrid Java Framework features  three layers of Class implementations:
  
  		> 	Test Classes : This layer contents the Test Case Classes Written as testNG methods. This Code is The Top Level and
  		 	resembles actual Test Cases Steps. It Makes Calls to Interact with Web Elements. For example,  Action calls like Click on a link, 
