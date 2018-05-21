@@ -20,3 +20,7 @@
  		 	It includes methods to Access Test Suite Property Files, Excel Files and relational Database. Also contains Data Providers,
  			Random Data generators, error Login, robot calls, Initializations, Tracking, and Closure. i
  			Generic calls like scrollToElement(), findFrames(), findRowsInTable() etc.
+ 			
+ 			See: 
+ 			
+ 			https://github.com/efrain583/in.automationtest/blob/master/in.automationtest/doc/FrameworkDiagram.pdf
