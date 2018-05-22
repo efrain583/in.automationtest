@@ -1,7 +1,13 @@
+utomation Features:
+
+		This Selenium Automation Demo Project features Selenium3 WebDriver API in a Page Object Oriented Design Pattern. Elements Interactions Includes Forms, TextBoxes, Frames, Alerts, DropDowns, Radio Buttons, Links etc. Test Data is provided via Data Provider methods by accessing a MySql Db or by Accessing Excel Data Files. Random Data generation is also used when Applicable. Other features include Parallel Execution, Log4j, Grouping, Performance Setup via Stopwatch,and Reporting. 
+
+
  Framework:
  
 		This Selenium Test Automation Demo Project is Page-Object driven, 
 		Data driven, and Property driven.
+ 	 	
  	 	This Hybrid Java Framework features  three layers of Class implementations:
  
  		> 	Test Classes : This layer contents the Test Case Classes Written as testNG methods. This Code is The Top Level and
@@ -16,7 +22,8 @@
  			 Page classes are reusable across all Test Classes that need to interact with any of Its Elements. 
  
  		>	UtilKit : The UtilKit contains a set of Static methods to perform low level generic APIs. 
- 			Methods in here are re-usable across multiple projects using the same framework.
+ 			Methods in here are re-usable across multiple projects using the same framework. To make this work, each Project Will have to Keep
+ 			Its own Property Files and add the UtilKit as a Maven dependency.
  		 	It includes methods to Access Test Suite Property Files, Excel Files and relational Database. Also contains Data Providers,
  			Random Data generators, error Login, robot calls, Initializations, Tracking, and Closure. i
  			Generic calls like scrollToElement(), findFrames(), findRowsInTable() etc.
