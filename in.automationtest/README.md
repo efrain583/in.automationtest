@@ -1,4 +1,4 @@
-utomation Features:
+Automation Features:
 
 		This Selenium Automation Demo Project features Selenium3 WebDriver API in a Page Object Oriented Design Pattern. Elements Interactions Includes Forms, TextBoxes, Frames, Alerts, DropDowns, Radio Buttons, Links etc. Test Data is provided via Data Provider methods by accessing a MySql Db or by Accessing Excel Data Files. Random Data generation is also used when Applicable. Other features include Parallel Execution, Log4j, Grouping, Performance Setup via Stopwatch,and Reporting. 
 
