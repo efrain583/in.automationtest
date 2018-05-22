@@ -2,6 +2,7 @@ package in.automationtest.tests;
 
 import java.util.Set;
 
+import org.testng.IResultMap;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -55,6 +56,16 @@ public class AutomationTestingListener implements ITestListener {
 
 	public void onFinish(ITestContext context) {
 		// TODO Auto-generated method stub
+		
+		IResultMap resultMap  = context.getFailedTests();
+
+		Set<ITestResult> testResultSet = resultMap.getAllResults();
+		System.out.println(UtilKit.currentMethod() + " Here are the Falied Test Cases : \n");
+		for(ITestResult currResult : testResultSet){
+			
+			System.out.println(currResult.getName() + " : " + currResult.getMethod().getMethodName() + " : " + currResult.getStatus());
+			
+		}
 		
 	}
 
