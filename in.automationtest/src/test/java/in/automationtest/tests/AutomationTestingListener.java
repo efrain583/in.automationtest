@@ -22,7 +22,7 @@ public class AutomationTestingListener implements ITestListener {
 
 	public void onTestFailure(ITestResult result) {
 		
-		Throwable throwable = new Throwable("Failure Detcted", new Throwable(" And that's all I know ..."));
+		Throwable throwable = new Throwable("Failure Detected", new Throwable(" And that's all I know ..."));
 		
 		Set<String> resultAttributes = result.getAttributeNames();
 		if (resultAttributes.size() > 0){
