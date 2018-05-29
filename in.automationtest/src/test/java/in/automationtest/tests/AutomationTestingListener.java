@@ -23,7 +23,8 @@ public class AutomationTestingListener implements ITestListener {
 
 	public void onTestFailure(ITestResult result) {
 		
-		Throwable throwable = new Throwable("Failure Detected", new Throwable(" And that's all I know ..."));
+		// no need to throw an exception here ... At least for now
+		//Throwable throwable = new Throwable("Failure Detected", new Throwable(" And that's all I know ..."));
 		
 		Set<String> resultAttributes = result.getAttributeNames();
 		if (resultAttributes.size() > 0){
@@ -32,11 +33,11 @@ public class AutomationTestingListener implements ITestListener {
 		}
 		}
 		else{
-			UtilKit.logger.warn("Nor Result Attributes for : " + result.getMethod(), throwable);
+			UtilKit.logger.warn("Nor Result Attributes for : " + result.getMethod());
 		}
-		//UtilKit.logger.fatal(result.getMethod() + " " + result.getParameters().toString() + " FAILED  ",throwable);
-		// Failed miserably
-		UtilKit.logger.fatal(result.getMethod() + " " + result.getParameters().toString() + " FAILED MISERABLY " + " Status : " + result.getStatus(),result.getThrowable());
+		//UtilKit.logger.error(result.getMethod() + " " + result.getParameters().toString() + " FAILED  ",throwable);
+		// Failed 
+		UtilKit.logger.error(result.getMethod() + " " + result.getParameters().toString() + " FAILED " + " Status : " + result.getStatus(),result.getThrowable());
 	}
 
 	public void onTestSkipped(ITestResult result) {
@@ -54,19 +55,26 @@ public class AutomationTestingListener implements ITestListener {
 		
 	}
 
+	@SuppressWarnings("null")
 	public void onFinish(ITestContext context) {
 		// TODO Auto-generated method stub
 		
 		IResultMap resultMap  = context.getFailedTests();
 
+		StringBuilder testResultsMessage = new StringBuilder();
+		
 		Set<ITestResult> testResultSet = resultMap.getAllResults();
-		System.out.println(UtilKit.currentMethod() + " Here are the Falied Test Cases : \n");
+		System.out.println(UtilKit.currentMethod() + " " + resultMap.size() + " Cases Failed. Here are the Falied Test Cases : \n");
 		for(ITestResult currResult : testResultSet){
 			
-			System.out.println(currResult.getName() + " : " + currResult.getMethod().getMethodName() + " : " + currResult.getStatus());
+			System.out.println(" Test Case : " + currResult.getMethod().getMethodName() + " Status: " + currResult.getStatus());
+			testResultsMessage.append(" Test Case : " + currResult.getMethod().getMethodName() + " Status: " + currResult.getStatus() + "\n");
+			
 			
 		}
-		
+		System.out.println("\n");
+
+		UtilKit.sendRestResultsEMail(testResultsMessage.toString());
 	}
 
 }
