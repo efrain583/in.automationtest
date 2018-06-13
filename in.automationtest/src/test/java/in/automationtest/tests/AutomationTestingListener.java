@@ -74,7 +74,9 @@ public class AutomationTestingListener implements ITestListener {
 		}
 		System.out.println("\n");
 
-		UtilKit.sendRestResultsEMail(testResultsMessage.toString());
+		if(UtilKit.getConfigProp("NOTIFICATION").equals("ON")){
+			UtilKit.sendRestResultsEMail(testResultsMessage.toString());
+		}
 	}
 
 }

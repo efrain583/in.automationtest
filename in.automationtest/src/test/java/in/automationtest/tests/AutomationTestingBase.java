@@ -10,6 +10,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -31,7 +32,7 @@ public class AutomationTestingBase {
 	String className = this.getClass().getName();
 	
 	
-	@BeforeClass (groups = {"grid", "register", "performance","wysiwyg","video"})
+	@BeforeClass (groups = {"grid", "register", "performance","wysiwyg","video","widgets"})
 	@Parameters ("browser")
 	public void startClass(@Optional("firefox") String browser){
 		
@@ -43,7 +44,7 @@ public class AutomationTestingBase {
 	}
 	
 
-	@BeforeMethod(groups = { "grid", "register", "performance", "wysiwyg", "video" })
+	@BeforeMethod(groups = { "grid", "register", "performance", "wysiwyg", "video","widgets" })
 	public void startRegisterMethod(Method method) {
 		if (UtilKit.methodInGroup(method, "register")) {
 			driver.findElement(By.xpath(".//a[text()='Register']")).click();
@@ -82,5 +83,11 @@ public class AutomationTestingBase {
 	@AfterClass (groups = {"grid", "register","performace"})
 	public void stopClass(){
 		UtilKit.terminateTest(driver);
+	}
+	
+	@DataProvider
+	public Object[][] countriesDataProvider(){
+		
+		return UtilKit.getTestData("in.automationtest", "in.automationtest", "countries");
 	}
 }
