@@ -1,5 +1,4 @@
-#!/usr/bin/bash
-#
+#!/usr/bin/bash 
 # This script runs a testng xml suite file for the in.automationtest project
 # Much better to do this using Maven
 # Instead of a bash script
@@ -34,6 +33,6 @@ export SUITEDIR=C:/Users/efrain/git/in.automationtest/in.automationtest/test-out
 echo
 echo
 
-java -cp ${CLASSPATH} org.testng.TestNG $SUITEDIR/testng-failed.xml 
+java -cp ${CLASSPATH} org.testng.TestNG $SUITEDIR/testng-failed.xml
 
 exit 0
