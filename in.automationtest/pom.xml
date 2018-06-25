@@ -89,12 +89,23 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		</plugins>
 	</reporting>
 
- <repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-  </repositories>
+  	<repositories>
+<!-- 		<repository> -->
+<!-- 		    <id>jitpack.io</id> -->
+<!-- 		    <url>https://jitpack.io</url> -->
+<!-- 		</repository> -->
+
+ 			<repository>
+            	<id>github-maven-repo</id>
+            	<releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+			</snapshots>
+             	<url>https://github.com/efrain583/AutomationUtilities/raw/master/releases</url> 
+			</repository>
+	</repositories>
   
 	<dependencies>
 	
@@ -108,15 +119,20 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 <!-- 			<systemPath>C:\Users\efrain\.m2\repository\UtilKit\AutomationUtilities\1.0\AutomationUtilities-1.0-tests.jar</systemPath> -->
 <!-- 		</dependency> -->
 
+<!-- 		<dependency> Missing artifact com.github.efrain583:AutomationUtilities:jar:1.0 Error here -->
+<!-- 	    	<groupId>com.github.efrain583</groupId> -->
+<!-- 	    	<artifactId>AutomationUtilities.target.AutomationUtilities</artifactId> -->
+<!-- 	    	<version>1.0-tests</version> -->
+<!-- 		</dependency> -->
 
-		<dependency>
-	    	<groupId>com.github.efrain583</groupId>
-	    	<artifactId>AutomationUtilities</artifactId>
-	    	<version>1.0</version>
-		</dependency>
-	
-		<!-- Maven JXR plugin To Cross Reference the line number of the source 
-			code that caused a test to the fail. -->
+			<dependency>
+            		<groupId>UtilKit</groupId>
+            		<artifactId>AutomationUtilities</artifactId>
+            		
+            		<version>1.0</version>
+			</dependency>
+
+		<!-- Maven JXR plugin To Cross Reference the line number of the source code that caused a test to the fail. -->
 		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jxr-plugin -->
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -206,9 +222,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		
 		<!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
 		<dependency>
+		
     		<groupId>com.sikulix</groupId>
     		<artifactId>sikulixapi</artifactId>
-    		<version>1.1.0</version>
+    		<version>1.1.1</version>
 		</dependency>
 		
 	</dependencies>
