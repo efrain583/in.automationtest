@@ -26,9 +26,10 @@ public class AutomationTestingVideoPage {
 	
 	//Sikuli Elements
 	Screen	youtubeScreen = new Screen();
-	Pattern youtubePlayImage = new Pattern("C:/Users/efrain/git/in.automationtest/in.automationtest/src/test/resources/playImage.png"); 
-	Pattern youtubePlayImage2 = new Pattern("C:/Users/efrain/git/in.automationtest/in.automationtest/src/test/resources/playImage2.png"); 
-	Pattern youtubePauseImage = new Pattern("C:/Users/efrain/git/in.automationtest/in.automationtest/src/test/resources/pauseImage.png"); 
+	String projectFolder = System.getenv("GIT_LOCAL_REPOSITORY");
+	Pattern youtubePlayImage = new Pattern(projectFolder + "/in.automationtest/in.automationtest/src/test/resources/playImage.png"); 
+	Pattern youtubePlayImage2 = new Pattern(projectFolder + "/in.automationtest/in.automationtest/src/test/resources/playImage2.png"); 
+	Pattern youtubePauseImage = new Pattern(projectFolder + "/in.automationtest/in.automationtest/src/test/resources/pauseImage.png"); 
 	
 	public WebElement videoLink(){
 		return driver.findElement(videoLinkL);

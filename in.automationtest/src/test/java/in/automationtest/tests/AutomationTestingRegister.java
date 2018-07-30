@@ -87,10 +87,8 @@ public class AutomationTestingRegister extends AutomationTestingBase {
 	}	
 		
 	@Test(enabled=true, groups={"register", "performance"}, 
-			/*
 			dependsOnMethods ={"phoneRequiredRegistration","countryRequiredRegistration",
 								"genderRequiredRegistration","emailRequiredRegistration"},
-								*/
 			dataProvider = "registrationDataProvider")
 	public void refreshRegistration(
 									String fName,String lName, String address, String email, String phone, String sLanguage,

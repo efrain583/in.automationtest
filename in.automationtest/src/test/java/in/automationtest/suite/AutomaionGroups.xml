@@ -10,6 +10,9 @@
 				<include name="grid"></include>
 				<include name="register"></include>
 				<include name="wysiwyg"></include>
+				<include name="video"></include>
+				<include name="widget"></include>
+				
 			</define>
 			<define name="NonRegister">
 				<include name="grid"></include>
@@ -25,6 +28,9 @@
 			<class name="in.automationtest.tests.AutomationTestingRegister" />
 			<class name="in.automationtest.tests.AutomationTestingGrid" />
 			<class name="in.automationtest.tests.AutomationTestingCKEditor" />
+			<class name="in.automationtest.tests.AutomationTestingVideo" />
+			<class name="in.automationtest.tests.AutomationTestingWidgets" />
+
 		</classes>
 	</test> <!-- AutomationGroupsBasic -->
 </suite> <!-- AutomationGroups -->

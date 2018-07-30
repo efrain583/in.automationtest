@@ -102,6 +102,7 @@ public class AutomationTestingWidgetsPage {
 	enum month { January,February,March,April,May,June,July, August,September,Octuber,November,December }
 	
 	public WebElement datepickerInput(){
+		UtilKit.waitForElement(datepickerInputL, driver, "Displayed", 3);
 		return driver.findElement(datepickerInputL);
 	}
 	
@@ -282,7 +283,8 @@ public class AutomationTestingWidgetsPage {
 
 	public void mouseMoveToWidgetsLink(){
 		widgetActions.moveToElement(widgetsLink()).perform();
-		widgetActions.click(widgetsLink()).perform();;
+		UtilKit.suspendAction(1500);
+//		widgetActions.click(widgetsLink()).perform();;
 	}
 	public void mouseClickOnAccordionLink(){
 		

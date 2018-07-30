@@ -31,6 +31,7 @@ public class AutomationTestingGridPage {
 	Select itemsPerPageSelect = null;
 	
 	public WebElement webTableLink(){
+		UtilKit.waitForElement(webTableLinkL, driver, "Displayed", 2);
 		return driver.findElement(webTableLinkL);
 	}
 	public WebElement gridTableDiv(){

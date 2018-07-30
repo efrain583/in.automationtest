@@ -66,7 +66,7 @@ public class AutomationTestingWidgets extends AutomationTestingBase {
 			driver.navigate().refresh();
 	}
 	
-	@Test(enabled=true, groups = {"widget"}/*, dependsOnMethods ={"selectCoutriesFromAutoSelect"}*/)
+	@Test(enabled=true, groups = {"widget"}, dependsOnMethods ={"selectCountriesFromAutoSelect"})
 		public void accessDatepicker(){
 			
 			AutomationTestingWidgetsPage ATWP = new AutomationTestingWidgetsPage(driver);
@@ -80,6 +80,7 @@ public class AutomationTestingWidgets extends AutomationTestingBase {
 
 		AutomationTestingWidgetsPage ATWP = new AutomationTestingWidgetsPage(driver);
 		
+//		ATWP.datepickerInput().clear();
 		ATWP.datepickerInput().click();
 		ATWP.pickDate("2019", "September", "18");
 		UtilKit.suspendAction(10000);
@@ -87,11 +88,12 @@ public class AutomationTestingWidgets extends AutomationTestingBase {
 		System.out.println("Date Picked Value: " + UtilKit.javaScriptGetValue(driver, ATWP.datepickerInput()));
 		System.out.println("Date Picked HTML: " + UtilKit.javaScriptGetHTML(driver, ATWP.datepickerInput()));
 	}
-	@Test(enabled=true,groups={"widget"}, dependsOnMethods = {"accessDatepicker"})
+	@Test(enabled=true,groups={"widget"}, dependsOnMethods = {"testDatePicker"})
 	public void testDatePickerInput(){
 
 		AutomationTestingWidgetsPage ATWP = new AutomationTestingWidgetsPage(driver);
 		
+//		ATWP.datepickerInput().clear();
 		//ATWP.datepickerInput().sendKeys("09/12/2017"); /* This is now Working... Using JavaScript below to set value
 		UtilKit.javaScriptSendKeys(driver, ATWP.datepickerInput(), "09/12/2017");
 		UtilKit.suspendAction(1000);
@@ -99,7 +101,7 @@ public class AutomationTestingWidgets extends AutomationTestingBase {
 		System.out.println("Date Picked Value: "   + UtilKit.javaScriptGetValue(driver, ATWP.datepickerInput()));
 		System.out.println("Date Picked HTML: " + UtilKit.javaScriptGetHTML(driver, ATWP.datepickerInput()));
 	}
-	@Test(enabled=true, groups = {"widget"}/*, dependsOnMethods ={"testDatePickerInput"}*/)
+	@Test(enabled=true, groups = {"widget"}, dependsOnMethods ={"testDatePickerInput"})
 		public void accessSlider(){
 			
 			AutomationTestingWidgetsPage ATWP = new AutomationTestingWidgetsPage(driver);
@@ -121,10 +123,14 @@ public class AutomationTestingWidgets extends AutomationTestingBase {
 			Assert.assertTrue(ATWP.verifySliderHandleLocation(.75), " Unable to verify Slider Handle Location.");
 			
 		}
-	@Test(enabled=true, groups = {"widgets"}, dependsOnMethods = {"accessSlider"})
+	@Test(enabled=true, groups = {"widgets"}, dependsOnMethods = {"testSlider1"})
 		public void testSlider2(){
 
 			AutomationTestingWidgetsPage ATWP = new AutomationTestingWidgetsPage(driver);
+			
+			driver.navigate().refresh();
+			UtilKit.suspendAction(10000);
+
 			ATWP.moveHandle(.25);
 			ATWP.moveHandle(.25);
 			ATWP.moveHandle(.25);
@@ -133,18 +139,25 @@ public class AutomationTestingWidgets extends AutomationTestingBase {
 			// At this point it should be at 100%, Let verify it
 			Assert.assertTrue(ATWP.verifySliderHandleLocation(1), " Unable to verify Slider Handle Location.");
 	}
-	@Test(enabled=true, groups = {"widgets"}, dependsOnMethods = {"accessSlider"})
+	@Test(enabled=true, groups = {"widgets"}, dependsOnMethods = {"testSlider2"})
 		public void testSlider3(){
 
 			AutomationTestingWidgetsPage ATWP = new AutomationTestingWidgetsPage(driver);
 			
+			driver.navigate().refresh();
+			UtilKit.suspendAction(10000);
+			
 			// At this point it should be at 0%, Let verify it
 			Assert.assertTrue(ATWP.verifySliderHandleLocation(0), " Unable to verify Slider Handle Location.");
 	}
-	@Test(enabled=true, groups = {"widgets"}, dependsOnMethods = {"accessSlider"})
+	@Test(enabled=true, groups = {"widgets"}, dependsOnMethods = {"testSlider3"})
 		public void testSlider4(){
 
 			AutomationTestingWidgetsPage ATWP = new AutomationTestingWidgetsPage(driver);
+			
+			driver.navigate().refresh();
+			UtilKit.suspendAction(10000);
+
 			ATWP.moveHandle(.25);
 			ATWP.moveHandle(.10);
 			
