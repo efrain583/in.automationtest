@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AutomationParallelBrowsers" verbose="8" parallel="false" thread-count="2">
+	<listeners>
+		<listener class-name="in.automationtest.tests.AutomationTestingListener"></listener>
+	</listeners>
+<!-- 	<test name="AutomationFirefox"> -->
+<!-- 	<parameter name="browser" value="firefox"></parameter> -->
+<!-- 		<classes> -->
+<!-- 			<class name="in.automationtest.tests.AutomationTestingRegister" /> -->
+<!-- 			<class name="in.automationtest.tests.AutomationTestingGrid" /> -->
+<!-- 			<class name="in.automationtest.tests.AutomationTestingCKEditor" /> -->
+<!-- 			<class name="in.automationtest.tests.AutomationTestingWidgets" /> -->
+<!-- 			<class name="in.automationtest.tests.AutomationTestingVideo" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> AutomationFirefox -->
+	<test name="AutomationChrome">
+	<parameter name="browser" value="chrome"></parameter>
+		<classes>
+<!-- 			<class name="in.automationtest.tests.AutomationTestingRegister" /> -->
+			<class name="in.automationtest.tests.AutomationTestingGrid" />
+<!-- 			<class name="in.automationtest.tests.AutomationTestingCKEditor" /> -->
+<!-- 			<class name="in.automationtest.tests.AutomationTestingWidgets" /> -->
+<!-- 			<class name="in.automationtest.tests.AutomationTestingVideo" /> -->
+		</classes>
+		</test>
+</suite> <!-- AutomationChromme -->
