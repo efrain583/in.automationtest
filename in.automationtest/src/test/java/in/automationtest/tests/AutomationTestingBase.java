@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -25,18 +26,24 @@ import in.automationtest.pages.AutomationTestingVideoPage;
 
 public class AutomationTestingBase {
 	
-	WebDriver driver = null;
 	String project = "in.automationtest";
 	String application = project;
 	String browser = "firefox";
 	String className = this.getClass().getName();
+	WebDriver driver = null;
 	
 	
 	@BeforeClass (groups = {"grid", "register", "performance","wysiwyg","video","widgets"})
-	@Parameters ("browser")
-	public void startClass(@Optional("firefox") String browser){
+	@Parameters ({"browser", "gridNodeURL", "nodePlatform"})
+	public void startClass(@Optional("firefox") String browser,
+							@Optional("") String gridNodeURL,
+							@Optional("") String nodePlatform){
 		
-		driver = UtilKit.initTest(project, application, browser, className);
+		if(gridNodeURL.isEmpty()) 
+			driver = UtilKit.initTest(project, application, browser, className);
+		else
+			driver = UtilKit.initGridTest(project, application, browser, gridNodeURL, nodePlatform, className);
+
 		By skipSigninButtonL = UtilKit.UIMap("SKIPSIGNIN_BUTTON");
 		driver.findElement(skipSigninButtonL).click();
 		UtilKit.waitForPageTitle(driver, 3, "Register");

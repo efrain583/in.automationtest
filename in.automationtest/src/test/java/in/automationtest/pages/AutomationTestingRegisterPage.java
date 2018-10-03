@@ -99,7 +99,7 @@ public class AutomationTestingRegisterPage {
 	}
 	
 	public WebElement languageMultiSelect(){
-		UtilKit.waitForElement(languageMultiSelectL, driver, "Displayed", 2);
+		UtilKit.waitForElement(languageMultiSelectL, driver, "Displayed", 9);
 		return driver.findElement(languageMultiSelectL);
 	}
 

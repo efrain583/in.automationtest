@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="AutomationParallelBrowsers" verbose="8" parallel="tests" thread-count="5">
+<suite name="AutomationGridParallelBrowsers" verbose="8" parallel="tests" thread-count="8">
 	<listeners>
 		<listener class-name="in.automationtest.tests.AutomationTestingListener"></listener>
 	</listeners>
 	<test name="AutomationFirefox">
 	<parameter name="browser" value="firefox"></parameter>
+	<parameter name="gridNodeURL" value="http://192.168.1.18:5555/wd/hub"></parameter>
+	<parameter name="nodePlatform" value="win10"></parameter>
 		<classes>
 <!-- 			<class name="in.automationtest.tests.AutomationTestingRegister" /> -->
 			<class name="in.automationtest.tests.AutomationTestingGrid" />
@@ -13,15 +15,17 @@
 <!-- 			<class name="in.automationtest.tests.AutomationTestingWidgets" /> -->
 <!-- 			<class name="in.automationtest.tests.AutomationTestingVideo" /> -->
 		</classes>
-	</test> <!-- AutomationFirefox -->
-	<test name="AutomationChrome">
-	<parameter name="browser" value="chrome"></parameter>
-		<classes>
-			<class name="in.automationtest.tests.AutomationTestingRegister" />
+	</test> 
+<!-- 	<test name="AutomationChrome"> -->
+<!-- 	<parameter name="browser" value="chrome"></parameter> -->
+<!-- 	<parameter name="gridNodeURL" value="http://192.168.1.18:5555/wd/hub"></parameter> -->
+<!-- 	<parameter name="nodePlatform" value="win10"></parameter> -->
+<!-- 		<classes> -->
+<!-- 			<class name="in.automationtest.tests.AutomationTestingRegister" /> -->
 <!-- 			<class name="in.automationtest.tests.AutomationTestingGrid" /> -->
 <!-- 			<class name="in.automationtest.tests.AutomationTestingCKEditor" /> -->
 <!-- 			<class name="in.automationtest.tests.AutomationTestingWidgets" /> -->
 <!-- 			<class name="in.automationtest.tests.AutomationTestingVideo" /> -->
-		</classes>
-		</test> <!--  AutomationChrome -->
-</suite> <!-- AutomationChromme -->
+<!-- 		</classes> -->
+<!-- 		</test> -->
+</suite> <!-- AutomationGridParallelBrowsers -->
