@@ -28,14 +28,14 @@ public class AutomationTestingBase {
 	
 	String project = "in.automationtest";
 	String application = project;
-	String browser = "firefox";
+	String browser = "chrome";
 	String className = this.getClass().getName();
 	WebDriver driver = null;
 	
 	
 	@BeforeClass (groups = {"grid", "register", "performance","wysiwyg","video","widgets"})
 	@Parameters ({"browser", "gridNodeURL", "nodePlatform"})
-	public void startClass(@Optional("firefox") String browser,
+	public void startClass(@Optional("chrome") String browser,
 							@Optional("") String gridNodeURL,
 							@Optional("") String nodePlatform){
 		
